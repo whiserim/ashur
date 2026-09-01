@@ -139,6 +139,10 @@
   line-height: 1.03;
 }
 
+.mobile-site .hero-hook strong.hero-hook__phrase {
+  padding: 0.06em 0.18em;
+}
+
 .mobile-site.hero-copy-variant .hero-copy--hook {
   max-width: 520px;
   margin-inline: auto;
