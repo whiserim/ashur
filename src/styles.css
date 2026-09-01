@@ -275,7 +275,7 @@ img {
 }
 
 .hero-copy-variant .hero-content {
-  width: min(760px, 62vw);
+  width: min(900px, 78vw);
 }
 
 .hero-copy-variant .game-logo {
@@ -293,14 +293,19 @@ img {
 }
 
 .hero-copy-variant .hero h1.hero-hook {
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 0 16px;
-  font-size: clamp(2.15rem, 3.65vw, 3.8rem);
+  font-size: clamp(2.1rem, 3.15vw, 3rem);
   line-height: 1.02;
 }
 
 .hero-hook__line {
   display: block;
+  white-space: nowrap;
+}
+
+.hero-hook__phrase {
+  white-space: nowrap;
 }
 
 .hero-hook strong {
