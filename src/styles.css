@@ -315,7 +315,7 @@ img {
 
 .hero-hook strong.hero-hook__phrase {
   display: inline-block;
-  padding: 0.08em 0.24em;
+  padding: 0.08em 0;
   border-radius: 2px;
   background: var(--gold);
   box-shadow: 3px 3px 0 rgb(0 0 0 / 45%);
