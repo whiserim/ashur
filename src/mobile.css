@@ -109,6 +109,48 @@
   min-height: 58px;
 }
 
+.mobile-site.hero-copy-variant .hero {
+  padding-top: 26px;
+  padding-bottom: 38px;
+}
+
+.mobile-site.hero-copy-variant .hero-content {
+  text-align: center;
+}
+
+.mobile-site.hero-copy-variant .eyebrow {
+  justify-content: center;
+}
+
+.mobile-site.hero-copy-variant .game-logo {
+  width: min(92%, 430px);
+  margin-inline: auto;
+}
+
+.mobile-site.hero-copy-variant .hero-tagline {
+  margin: 12px 0 10px;
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.mobile-site.hero-copy-variant .hero h1.hero-hook {
+  margin: 0 0 14px;
+  font-size: clamp(1.85rem, 8.8vw, 3.05rem);
+  line-height: 1.03;
+}
+
+.mobile-site.hero-copy-variant .hero-copy--hook {
+  max-width: 520px;
+  margin-inline: auto;
+  font-size: clamp(1rem, 4.5vw, 1.16rem);
+  line-height: 1.48;
+}
+
+.mobile-site.hero-copy-variant .hero-actions {
+  align-items: center;
+  margin-top: 22px;
+}
+
 .mobile-quick-nav {
   position: sticky;
   z-index: 40;

@@ -11,6 +11,8 @@ export default defineConfig({
       input: {
         desktop: fileURLToPath(new URL('./index.html', import.meta.url)),
         mobile: fileURLToPath(new URL('./mobile.html', import.meta.url)),
+        desktopCopyPreview: fileURLToPath(new URL('./index2.html', import.meta.url)),
+        mobileCopyPreview: fileURLToPath(new URL('./mobile2.html', import.meta.url)),
       },
     },
   },
