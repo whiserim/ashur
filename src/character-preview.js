@@ -25,7 +25,7 @@ const observer = new IntersectionObserver(async (entries) => {
     controls.forEach((button) => { button.disabled = false; });
     updateVisibility();
   } catch (error) {
-    status.textContent = "The Captain couldn't come aboard. Reload the page to try again.";
+    status.textContent = "The crew couldn't come aboard. Reload the page to try again.";
     status.dataset.failed = 'true';
     console.error('Character preview failed:', error);
   }

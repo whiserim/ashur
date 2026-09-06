@@ -213,15 +213,17 @@
 
         <section class="character-section section-pad" id="character-preview" aria-labelledby="character-title">
           <div class="character-copy">
-            <p class="section-kicker">Meet your captain</p>
-            <h2 id="character-title">Big hat.<br /><span>Bigger attitude.</span></h2>
-            <p>Give the Captain a tug. He can take it.</p>
-            <p class="character-customization"><strong>Customize your character’s look in-game.</strong><br />The attitude comes standard.</p>
+            <p class="section-kicker">Gamble Hunters</p>
+            <h2 id="character-title">Character Preview.</h2>
+            <p>Meet the characters of Gamble Hunters.</p>
+            <p class="character-customization">Customize your character in-game.<br />Make your look your own.</p>
           </div>
           <div class="character-view">
             <div class="character-stage" data-preview-stage>
-              <span class="character-name">Captain</span>
-              <div class="character-status" data-preview-status role="status">The Captain is getting shipshape…</div>
+              <span class="character-name" data-character-name aria-live="polite" aria-atomic="true">Captain · 1 / 4</span>
+              <button class="character-arrow character-arrow--previous" type="button" data-preview-action="previous" aria-label="Previous character" disabled><span aria-hidden="true"></span></button>
+              <button class="character-arrow character-arrow--next" type="button" data-preview-action="next" aria-label="Next character" disabled><span aria-hidden="true"></span></button>
+              <div class="character-status" data-preview-status role="status">The crew is getting shipshape…</div>
             </div>
             <div class="character-controls" role="group" aria-label="Character controls">
               <button class="character-control" type="button" data-preview-action="jelly" aria-pressed="true" disabled>Stretch</button>
@@ -230,8 +232,8 @@
               <button class="character-control" type="button" data-preview-action="boop" disabled>Boop!</button>
               <button class="character-control" type="button" data-preview-action="reset" disabled>Reset view</button>
             </div>
-            <p class="character-instructions" id="character-instructions">Drag the Captain to stretch. Drag the backdrop to rotate.<br />Click the view, then scroll to zoom. On touchscreens, pinch to zoom.</p>
-            <noscript><p>Enable JavaScript to meet the Captain in 3D.</p></noscript>
+            <p class="character-instructions" id="character-instructions">Drag the character to stretch. Drag the backdrop to rotate.<br />Click the view, then scroll to zoom. On touchscreens, pinch to zoom.</p>
+            <noscript><p>Enable JavaScript to meet the crew in 3D.</p></noscript>
           </div>
         </section>
 

@@ -2,11 +2,17 @@ import * as THREE from 'three';
 import { buildCharacter, smoothNormals } from './captain-geometry.js';
 import { CAPTAIN, JellyState } from './captain-physics.js';
 import captainUrl from './assets/captain.json?url';
+import engineerUrl from './assets/engineer.json?url';
+import gunnerUrl from './assets/gunner.json?url';
+import navigatorUrl from './assets/navigator.json?url';
 
 export async function createViewer(section) {
-const response=await fetch(captainUrl);
-if(!response.ok)throw new Error(`Captain resource: HTTP ${response.status}`);
-const body=await buildCharacter(await response.json());
+const characters=await Promise.all([captainUrl,engineerUrl,gunnerUrl,navigatorUrl].map(async url=>{
+  const response=await fetch(url);
+  if(!response.ok)throw new Error(`Character resource: HTTP ${response.status}`);
+  return buildCharacter(await response.json());
+}));
+let selected=0,body=characters[0];
 const stage=section.querySelector('[data-preview-stage]');
 const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<700?1.5:2));
@@ -22,7 +28,8 @@ renderer.domElement.setAttribute('aria-label','Interactive Captain. Arrow keys r
 renderer.domElement.setAttribute('aria-describedby','character-instructions');
 const events=new AbortController();
 function listen(element,type,handler,options={}){element.addEventListener(type,handler,{...options,signal:events.signal});}
-const scene=new THREE.Scene();scene.add(body);
+const scene=new THREE.Scene();
+characters.forEach((character,index)=>{character.visible=index===0;scene.add(character);});
 const camera=new THREE.PerspectiveCamera(33,1,.05,60);
 const target=new THREE.Vector3(0,1.3,0);
 let yaw=.2,pitch=.1,distance=7,mode='jelly',auto=false;
@@ -91,12 +98,22 @@ function restore(){
 }
 function boop(){restore();physics.boop();}
 function reset(){restore();yaw=.2;pitch=.1;distance=7;positionCamera();}
+function selectCharacter(offset){
+  restore();body.visible=false;
+  selected=(selected+offset+characters.length)%characters.length;
+  body=characters[selected];body.visible=true;body.updateMatrixWorld(true);
+  section.querySelector('[data-character-name]').textContent=`${body.name} · ${selected+1} / ${characters.length}`;
+  renderer.domElement.setAttribute('aria-label',`Interactive ${body.name}. Arrow keys rotate, plus and minus zoom, Space gives a boop, and zero resets the view.`);
+  ring.material.color.set(['#ed9bbe','#e9c874','#df986d','#82c6ed'][selected]);
+}
 function setMode(value){release();mode=value;for(const key of ['jelly','orbit'])section.querySelector(`[data-preview-action=${key}]`).setAttribute('aria-pressed',key===value);}
 for(const button of section.querySelectorAll('[data-preview-action]'))listen(button,'click',()=>{
   const action=button.dataset.previewAction;
   if(action==='jelly'||action==='orbit')setMode(action);
   if(action==='boop')boop();
   if(action==='reset')reset();
+  if(action==='previous')selectCharacter(-1);
+  if(action==='next')selectCharacter(1);
   if(action==='auto'){auto=!auto;button.setAttribute('aria-pressed',auto);}
 });
 function setPointer(e){const r=renderer.domElement.getBoundingClientRect();pointer.set((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);ray.setFromCamera(pointer,camera);}
@@ -181,7 +198,7 @@ function stop(){active=false;cancelAnimationFrame(frame);release();contacts.clea
 listen(canvas,'webglcontextlost',event=>{
   event.preventDefault();failed=true;stop();
   const status=section.querySelector('[data-preview-status]');status.hidden=false;status.dataset.failed='true';
-  status.textContent='The preview lost its graphics connection. Reload the page to bring the Captain back.';
+  status.textContent='The preview lost its graphics connection. Reload the page to bring the crew back.';
   section.querySelectorAll('[data-preview-action]').forEach(button=>{button.disabled=true;});
 });
 resize();

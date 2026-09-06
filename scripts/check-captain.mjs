@@ -28,6 +28,8 @@ for (const direction of [[1, 0, 0], [0, -1, 0], [0, 0, 1], [1, 1, 1]]) {
   assert.ok(state.pull.length() + state.sway.length() + state.hop + Math.abs(state.squash) < .0001);
 }
 
+for (const name of ['captain', 'engineer', 'gunner', 'navigator']) {
+const captain = JSON.parse(read(`../src/assets/${name}.json`));
 // Check exported topology and the shared arm normals without requiring a GPU.
 const min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
 for (const part of captain.parts) for (let i = 0; i < part.positions.length; i++) {
@@ -65,11 +67,36 @@ for (const direction of [[0,0,0], [1,0,0], [-1,0,0], [0,1,0], [0,-1,0], [0,0,1],
     for (let i = 0; i < normal.count; i++) assert.ok(Math.abs(Math.hypot(normal.getX(i), normal.getY(i), normal.getZ(i)) - 1) < .0001);
   }
 }
+}
+// Exercise the production selector in both directions, including wraparound.
+const viewerSource = read('../src/captain-viewer.js');
+const selection = viewerSource.slice(viewerSource.indexOf('function selectCharacter('), viewerSource.indexOf('function setMode('));
+const checkSelection = new Function('assert', `
+  const characters=['Captain','Engineer','Gunner','Navigator'].map((name,index)=>({name,visible:index===0,updateMatrixWorld(){}}));
+  let selected=0,body=characters[0],resets=0;
+  const label={},section={querySelector(){return label;}};
+  const canvas={},renderer={domElement:{setAttribute(key,value){canvas[key]=value;}}};
+  const ring={material:{color:{set(){}}}};
+  function restore(){resets++;}
+  ${selection}
+  for(const [offset,name] of [[1,'Engineer'],[1,'Gunner'],[1,'Navigator'],[1,'Captain'],[-1,'Navigator'],[-1,'Gunner'],[-1,'Engineer'],[-1,'Captain']]){
+    selectCharacter(offset);
+    assert.equal(body.name,name);
+    assert.equal(characters.filter(character=>character.visible).length,1);
+    assert.ok(body.visible);
+    assert.ok(label.textContent.startsWith(name));
+    assert.ok(canvas['aria-label'].includes(name));
+  }
+  assert.equal(resets,8);
+`);
+checkSelection(assert);
 for (const page of ['index', 'mobile']) {
   const html = read(`../${page}.html`);
   assert.equal((html.match(/id="character-preview"/g) || []).length, 1);
   assert.equal((html.match(/href="#character-preview"/g) || []).length, 2);
   assert.ok(html.indexOf('id="character-preview"') < html.indexOf('id="gallery"'));
-  assert.ok(html.includes('Customize your character’s look in-game.'));
+  assert.ok(html.includes('Customize your character in-game.'));
+  assert.equal((html.match(/data-preview-action="previous"/g) || []).length, 1);
+  assert.equal((html.match(/data-preview-action="next"/g) || []).length, 1);
 }
-console.log('Captain: fixed settings, release stability, mesh integrity, seven deformation directions, and both page anchors passed.');
+console.log('Four characters: fixed settings, release stability, mesh integrity, seven deformation directions, and both page anchors passed.');
