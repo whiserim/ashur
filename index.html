@@ -59,10 +59,12 @@
     <meta
       name="twitter:image"
       content="https://ashur.team/og.png"
-    />
+    />
     <title>Gamble Hunters | ASHUR Inc.</title>
     <script type="module" crossorigin src="./assets/site-B_6ECdTn.js"></script>
+    <script type="module" crossorigin src="./assets/character-preview-DpZWMlRv.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/site-OoLKb8_U.css">
+    <link rel="stylesheet" crossorigin href="./assets/character-preview-DtEAHey4.css">
   </head>
   <body class="hero-copy-variant">
     <div class="site-shell">
@@ -76,6 +78,7 @@
         </a>
         <nav class="header-actions" aria-label="Primary navigation">
           <a class="text-link" href="#game">Game</a>
+          <a class="text-link" href="#character-preview">Character Preview</a>
           <a class="text-link" href="#gallery">Gallery</a>
           <a class="text-link" href="mailto:contact@ashur.team">Contact</a>
           <a
@@ -113,7 +116,8 @@
               Bet with friends, grow stronger, and risk it all again.
             </p>
             <div class="hero-actions">
-              <a
+              <div class="hero-button-stack">
+                <a
                 class="button button--primary"
                 href="https://store.steampowered.com/app/5117630/Gamble_Hunters/"
                 target="_blank"
@@ -127,6 +131,11 @@
                 />
                 Wishlist on Steam
               </a>
+                <a class="button button--character" href="#character-preview">
+                  <img class="preview-button-icon" src="./assets/section-icon-DAPf9izk.png" alt="" aria-hidden="true" />
+                  Character Preview
+                </a>
+              </div>
               <span class="release-note">January 2027 · PC</span>
             </div>
           </div>
@@ -242,6 +251,30 @@
               Make your first bet
               <span aria-hidden="true">↗</span>
             </a>
+          </div>
+        </section>
+
+        <section class="character-section section-pad" id="character-preview" aria-labelledby="character-title">
+          <div class="character-copy">
+            <p class="section-kicker">Meet your captain</p>
+            <h2 id="character-title">Big hat.<br /><span>Bigger attitude.</span></h2>
+            <p>Give the Captain a tug. He can take it.</p>
+            <p class="character-customization"><strong>Customize your character’s look in-game.</strong><br />The attitude comes standard.</p>
+          </div>
+          <div class="character-view">
+            <div class="character-stage" data-preview-stage>
+              <span class="character-name">Captain</span>
+              <div class="character-status" data-preview-status role="status">The Captain is getting shipshape…</div>
+            </div>
+            <div class="character-controls" role="group" aria-label="Character controls">
+              <button class="character-control" type="button" data-preview-action="jelly" aria-pressed="true" disabled>Stretch</button>
+              <button class="character-control" type="button" data-preview-action="orbit" aria-pressed="false" disabled>Rotate</button>
+              <button class="character-control" type="button" data-preview-action="auto" aria-pressed="false" disabled>Auto-rotate</button>
+              <button class="character-control" type="button" data-preview-action="boop" disabled>Boop!</button>
+              <button class="character-control" type="button" data-preview-action="reset" disabled>Reset view</button>
+            </div>
+            <p class="character-instructions" id="character-instructions">Drag the Captain to stretch. Drag the backdrop to rotate.<br />Click the view, then scroll to zoom. On touchscreens, pinch to zoom.</p>
+            <noscript><p>Enable JavaScript to meet the Captain in 3D.</p></noscript>
           </div>
         </section>
 
@@ -565,6 +598,6 @@
         </div>
       </div>
     </div>
-
+
   </body>
 </html>
