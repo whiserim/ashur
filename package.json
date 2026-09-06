@@ -17,5 +17,8 @@
     "typescript": "5.9.3",
     "vite": "8.0.13"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "three": "0.180.0"
+  }
 }
