@@ -98,7 +98,7 @@
 }
 
 .button--small,
-.mobile-site .mobile-header-cta {
+body.mobile-site .mobile-header-cta {
   --button-slices: 26px 63px 22px 68px;
   min-height: 54px;
   padding: 12px 22px 16px;
@@ -155,7 +155,8 @@
   border: 0;
 }
 
-.game-loop .loop-card + .loop-card {
+.game-loop .loop-card + .loop-card,
+.mobile-site .game-loop .loop-card + .loop-card {
   border: 0;
 }
 
@@ -262,16 +263,16 @@
   }
 
   .button,
-  .mobile-site .button--primary {
+  body.mobile-site .button--primary {
     min-height: 66px;
   }
 
   .button--small,
-  .mobile-site .mobile-header-cta {
+  body.mobile-site .mobile-header-cta {
     min-height: 50px;
   }
 
-  .mobile-site .mobile-header-cta {
+  body.mobile-site .mobile-header-cta {
     padding-inline: 20px;
     font-size: 0.9rem;
   }
@@ -280,7 +281,7 @@
     margin-top: 0;
   }
 
-  .mobile-site .hunt-image {
+  .mobile-site .hunt-feature .hunt-image {
     clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px), 0 14px);
   }
 
