@@ -1,0 +1,316 @@
+/* Privacy policy: in-page dialog and the standalone /privacy/ page share .privacy-document. */
+
+.privacy-dialog {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  place-items: center;
+  padding: clamp(14px, 4vw, 56px);
+  background: rgb(3 4 12 / 90%);
+  backdrop-filter: blur(12px);
+  animation: lightbox-in 180ms ease both;
+}
+
+.privacy-dialog[hidden] {
+  display: none;
+}
+
+.privacy-panel {
+  display: flex;
+  flex-direction: column;
+  width: min(860px, 100%);
+  min-width: 0;
+  max-height: min(86svh, 920px);
+  border: 1px solid var(--line);
+  background: var(--ink);
+  box-shadow: 0 30px 100px rgb(0 0 0 / 54%);
+}
+
+.privacy-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  padding: 14px 16px 14px 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.privacy-kicker {
+  margin-right: auto;
+  color: var(--gold);
+  font-family: 'Oxanium', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.privacy-close.lightbox-close {
+  position: static;
+}
+
+.privacy-fullpage {
+  color: rgb(248 245 237 / 70%);
+  font-family: 'Oxanium', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.privacy-fullpage:hover,
+.privacy-fullpage:focus-visible {
+  color: var(--gold);
+  outline: none;
+}
+
+.privacy-lang {
+  display: inline-flex;
+  border: 1px solid rgb(255 255 255 / 32%);
+}
+
+.privacy-lang button {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  color: rgb(248 245 237 / 70%);
+  font-family: 'Oxanium', sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.privacy-lang button[lang='ko'] {
+  font-family: system-ui, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0;
+}
+
+.privacy-lang button + button {
+  border-left: 1px solid rgb(255 255 255 / 32%);
+}
+
+.privacy-lang button[aria-pressed='true'] {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.privacy-lang button:hover:not([aria-pressed='true']),
+.privacy-lang button:focus-visible {
+  color: var(--gold);
+  outline: none;
+}
+
+.privacy-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 26px clamp(20px, 4vw, 40px) 36px;
+}
+
+.privacy-body:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: -1px;
+}
+
+/* Long legal text reads better in a regular-width face than the site's condensed display font. */
+.privacy-document {
+  color: rgb(248 245 237 / 82%);
+  font-family: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+.privacy-document:lang(ko) {
+  word-break: keep-all;
+}
+
+.privacy-document h1 {
+  margin: 0 0 6px;
+  color: var(--paper);
+  font-family: 'Oxanium', system-ui, sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  line-height: 1.25;
+}
+
+.privacy-document h2 {
+  margin: 34px 0 10px;
+  color: var(--gold);
+  font-family: 'Oxanium', system-ui, sans-serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+}
+
+.privacy-document h3 {
+  margin: 22px 0 8px;
+  color: var(--paper);
+  font-size: 0.98rem;
+}
+
+.privacy-document p,
+.privacy-document ul,
+.privacy-document ol {
+  margin: 0 0 12px;
+}
+
+.privacy-document ul,
+.privacy-document ol {
+  padding-left: 1.3em;
+}
+
+.privacy-document li + li {
+  margin-top: 6px;
+}
+
+.privacy-document li > ul {
+  margin: 6px 0 0;
+}
+
+.privacy-document strong {
+  color: var(--paper);
+}
+
+.privacy-document a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.privacy-effective {
+  color: rgb(248 245 237 / 54%);
+  font-size: 0.86rem;
+}
+
+.privacy-table {
+  overflow-x: auto;
+  margin: 0 0 14px;
+  border: 1px solid var(--line);
+}
+
+.privacy-table table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.privacy-table th,
+.privacy-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.privacy-table tr:last-child th,
+.privacy-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.privacy-table th {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.privacy-table tbody th {
+  width: 26%;
+  background: rgb(255 255 255 / 3%);
+}
+
+.privacy-table thead th {
+  background: rgb(250 202 109 / 10%);
+}
+
+/* Standalone page */
+
+.privacy-page main {
+  width: min(860px, 100%);
+  margin: 0 auto;
+  padding: 118px clamp(20px, 5vw, 40px) 80px;
+}
+
+.privacy-page-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.privacy-back {
+  color: rgb(248 245 237 / 70%);
+  font-family: 'Oxanium', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.privacy-back:hover,
+.privacy-back:focus-visible {
+  color: var(--gold);
+  outline: none;
+}
+
+@media (max-width: 720px) {
+  .privacy-dialog {
+    padding: 0;
+  }
+
+  .privacy-panel {
+    max-height: 100svh;
+    height: 100svh;
+    border: 0;
+  }
+
+  .privacy-toolbar {
+    padding: 12px 14px;
+  }
+
+  .privacy-dialog .privacy-kicker {
+    display: none;
+  }
+
+  .privacy-dialog .privacy-lang {
+    margin-right: auto;
+  }
+
+  .privacy-page main {
+    padding-top: 100px;
+  }
+
+  /* Two-column (label/value) tables stack on phones; the three-column transfer table keeps scrolling. */
+  .privacy-table table:not(:has(thead)) {
+    min-width: 0;
+  }
+
+  .privacy-table table:not(:has(thead)) tr {
+    display: block;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .privacy-table table:not(:has(thead)) tr:last-child {
+    border-bottom: 0;
+  }
+
+  .privacy-table table:not(:has(thead)) th,
+  .privacy-table table:not(:has(thead)) td {
+    display: block;
+    width: auto;
+    border-bottom: 0;
+  }
+
+  .privacy-table table:not(:has(thead)) th {
+    padding-bottom: 4px;
+  }
+
+  .privacy-table table:not(:has(thead)) td {
+    padding-top: 4px;
+  }
+}

@@ -13,6 +13,7 @@ export default defineConfig({
         mobile: fileURLToPath(new URL('./mobile.html', import.meta.url)),
         desktopCopyPreview: fileURLToPath(new URL('./index2.html', import.meta.url)),
         mobileCopyPreview: fileURLToPath(new URL('./mobile2.html', import.meta.url)),
+        privacy: fileURLToPath(new URL('./privacy/index.html', import.meta.url)),
       },
     },
   },
