@@ -1,0 +1,32 @@
+{
+  "appid": 5117630,
+  "language": "english",
+  "source": "https://steamcommunity.com/games/5117630/partnerevents/?l=english",
+  "fetchedAt": "2026-10-11T01:15:59.119Z",
+  "items": [
+    {
+      "id": "1846018067931115",
+      "title": "DEMO Update: Credits, Character Visuals, and Combat Polish",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846018067931115",
+      "publishedAt": "2026-10-08T18:56:46.000Z",
+      "summary": "This update adds a credits screen and fine-tunes character visuals and combat feedback. 🎨 Visuals and Appearance Added a credits screen. Adjusted the appearance of the art costumes. Improved hat...",
+      "type": "Patch notes"
+    },
+    {
+      "id": "1846018067925138",
+      "title": "Demo Balance Patch: October 6, 2026",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1846018067925138",
+      "publishedAt": "2026-10-07T06:28:19.000Z",
+      "summary": "We've been reading your feedback and watching how runs play out, and a few parts of the economy were clearly off. Today's update brings them back in line and fixes a few issues along the way. 🎰...",
+      "type": "Patch notes"
+    },
+    {
+      "id": "1845383656396253",
+      "title": "The GAMBLE HUNTERS Demo Is Out Now!",
+      "url": "https://steamstore-a.akamaihd.net/news/externalpost/steam_community_announcements/1845383656396253",
+      "publishedAt": "2026-10-06T12:20:45.000Z",
+      "summary": "The GAMBLE HUNTERS demo is now available on Steam! Thank you for waiting while we fixed the multiplayer connection issue. The demo is ready, and you can download it for free from our store page...",
+      "type": "Announcement"
+    }
+  ]
+}

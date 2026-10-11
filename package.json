@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
-    "build": "vite build",
+    "build": "node scripts/sync-steam-news.mjs --allow-cached && vite build",
+    "sync:news": "node scripts/sync-steam-news.mjs",
+    "test:renewal": "node --test scripts/renewal.test.mjs",
     "start": "vite preview --host 127.0.0.1"
   },
   "devDependencies": {
