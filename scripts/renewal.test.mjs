@@ -80,3 +80,28 @@ test('Demo promotion is on the hero artwork and button frames remain stable acro
   assert.ok(css.includes('.game-button:hover, .game-button:focus-visible'));
   assert.ok(css.includes('.steam-widget-wrap iframe { color-scheme: light;'));
 });
+
+test('Press kit navigation, content, and accessible external links are shared by both layouts', () => {
+  const home = readFileSync(new URL('../src/home.html', import.meta.url), 'utf8');
+  const css = readFileSync(new URL('../src/renewal.css', import.meta.url), 'utf8');
+  const js = readFileSync(new URL('../src/renewal.js', import.meta.url), 'utf8');
+  const navigation = /<a href="#gallery">Gallery<\/a><a href="#press">Press &amp; Creator<\/a><a href="mailto:contact@ashur.team">Contact<\/a>/g;
+  assert.equal([...home.matchAll(navigation)].length, 2);
+  const press = home.match(/<section class="press-section[\s\S]*?<\/section>/)?.[0];
+  assert.ok(press);
+  assert.ok(press.includes('id="press" aria-labelledby="press-title"'));
+  assert.ok(press.includes('Press &amp;<br /><em>Creators</em>'));
+  assert.ok(press.includes('Free to use'));
+  assert.ok(press.includes('Logos, screenshots, trailers, and key art are in our press kit.'));
+  assert.ok(press.includes('For keys, interviews, or anything else, reach us at <a href="mailto:contact@ashur.team">contact@ashur.team</a>'));
+  const kitLinks = [...press.matchAll(/<a\b[^>]+href="https:\/\/drive\.google\.com\/drive\/folders\/15j67SsLW-pSsL-vDdcT-_t-zmZAd41Aq\?usp=drive_link"[^>]*>/g)];
+  assert.equal(kitLinks.length, 2);
+  for (const [link] of kitLinks) {
+    assert.ok(link.includes('target="_blank"'));
+    assert.ok(link.includes('rel="noopener noreferrer"'));
+  }
+  assert.ok(home.indexOf('id="gallery"') < home.indexOf('id="press"'));
+  assert.ok(home.indexOf('id="press"') < home.indexOf('id="wishlist"'));
+  assert.ok(css.includes('@media (max-width: 1000px)'));
+  assert.ok(js.includes("window.matchMedia('(min-width: 1001px)')"));
+});
