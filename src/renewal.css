@@ -197,16 +197,15 @@ html[data-fest-state="ended"] .live-dot { animation: none; background: var(--gol
 .gallery-item-label span { color: var(--teal); font-size: 9px; letter-spacing: .08em; }
 .gallery-grid:not(.is-expanded) .gallery-item:nth-child(n + 13) { display: none; }
 .gallery-more { display: flex; justify-content: center; margin-top: 30px; }
-.gallery-more-button { min-height: 48px; padding: 12px 28px; border: 1px solid #3c5468; background: #132030; color: var(--paper); font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; transition: border-color 160ms, color 160ms; }
-.gallery-more-button:hover { border-color: var(--gold); color: var(--gold); }
+.gallery-more-button { min-width: 290px; font-size: 18px; }
 .gallery-dialog { width: min(1320px, 96vw); max-width: 96vw; max-height: 94svh; padding: 0; border: 1px solid #3a5266; background: #080d16; color: var(--paper); overflow: auto; }
 .gallery-dialog::backdrop { background: rgb(2 4 8 / 95%); }
 .gallery-toolbar { display: flex; gap: 20px; align-items: center; justify-content: space-between; padding: 12px 18px; }
-.gallery-toolbar p { font-size: 14px; }
-.lightbox-close, .gallery-controls button { flex-shrink: 0; min-height: 44px; background: #172431; color: var(--paper); border: 1px solid #395668; padding: 8px 16px; font-size: 12px; }
-.lightbox-close:hover, .gallery-controls button:hover { color: var(--gold); border-color: var(--gold); }
+.gallery-toolbar p { font-family: var(--display); font-size: 22px; line-height: 1.1; text-transform: uppercase; }
+.gallery-dialog .game-button { flex-shrink: 0; gap: 9px; min-width: 132px; }
+.gallery-dialog .game-button svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
 .lightbox-image { width: 100%; max-height: 73svh; aspect-ratio: 16 / 9; object-fit: contain; background: #04060b; }
-.gallery-controls { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; font-size: 12px; color: var(--muted); }
+.gallery-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 18px; color: var(--muted); font-family: var(--display); font-size: 20px; }
 
 .press-section { border-top: 1px solid var(--line); background: #0c131d; }
 .press-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(40px, 6vw, 88px); align-items: center; }
@@ -412,9 +411,10 @@ html[data-fest-state="ended"] .live-dot { animation: none; background: var(--gol
   .social-icon { width: 29px; height: 29px; }
   .back-to-top { width: 48px; height: 48px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); }
   .gallery-toolbar { padding: 8px 10px; gap: 12px; }
-  .gallery-toolbar p { font-size: 12px; }
-  .gallery-controls { padding: 10px; }
-  .gallery-controls button { font-size: 11px; padding-inline: 12px; }
+  .gallery-toolbar p { font-size: 17px; }
+  .gallery-controls { padding: 10px; font-size: 17px; }
+  .gallery-dialog .game-button { --button-slices: 22px 40px 20px 43px; min-width: 0; min-height: 48px; padding: 10px 18px 14px; font-size: 15px; }
+  .gallery-more-button { min-width: 0; width: 100%; max-width: 350px; }
 }
 @media (max-width: 360px) {
   .site-header { gap: 8px; padding-inline: 12px; }

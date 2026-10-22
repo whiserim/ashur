@@ -54,7 +54,7 @@ export function galleryMarkup() {
       <img src="${thumbnailPath(id)}" alt="${escapeHtml(alt)}" width="640" height="360" loading="lazy" decoding="async" />
       <span class="gallery-zoom" aria-hidden="true">+</span><span class="gallery-item-label"><span>${String(index + 1).padStart(2, '0')}</span>${escapeHtml(caption)}</span>
     </a>`).join('')}\n</div>
-    <div class="gallery-more"><button class="gallery-more-button" type="button" aria-controls="gallery-grid" aria-expanded="false" data-gallery-more>Show all ${screenshots.length} screenshots</button></div>`;
+    <div class="gallery-more"><button class="game-button game-button--teal gallery-more-button" type="button" aria-controls="gallery-grid" aria-expanded="false" data-gallery-more>Show all ${screenshots.length} screenshots</button></div>`;
 }
 
 // Three drifting rows of screenshots behind the hero. Each row repeats once so the loop is seamless.
