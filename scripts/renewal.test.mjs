@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { APP_ID, normalizeNews, plainText, safeNewsUrl } from './steam-news-data.mjs';
-import { galleryMarkup, newsMarkup, screenshots } from './renewal-markup.mjs';
+import { GALLERY_PREVIEW_COUNT, galleryMarkup, heroWallMarkup, heroWallRows, newsMarkup, screenshots } from './renewal-markup.mjs';
 
 const item = { gid: '123', title: 'Demo update', appid: APP_ID, feedname: 'steam_community_announcements', date: 1791485806, contents: '[h2]Hello Hunters,[/h2]Thank you for playing the GAMBLE HUNTERS DEMO. [b]A new patch is available.[/b]', url: 'https://steamcommunity.com/games/5117630/announcements/detail/123', tags: ['patchnotes'] };
 test('Official news is normalized, deduplicated, and ordered newest first', () => {
@@ -25,12 +25,26 @@ test('Steam content is plain text and safely escaped for static HTML', () => {
   assert.ok(!html.includes('<script>'));
   assert.ok(!plainText(`A${String.fromCodePoint(0x2014)}B`).includes(String.fromCodePoint(0x2014)));
 });
-test('All 20 updated screenshots have both optimized sizes and accessible links', () => {
-  assert.equal(screenshots.length, 20);
-  assert.equal(new Set(screenshots.map(([id]) => id)).size, 20);
-  assert.equal((galleryMarkup().match(/data-gallery /g) || []).length, 20);
-  for (const [id] of screenshots) for (const size of [640, 1600]) assert.ok(existsSync(new URL(`../src/assets/renewal/screenshot-${id}-${size}.webp`, import.meta.url)));
-  for (const [id] of screenshots) assert.ok(existsSync(new URL(`../public/gallery/screenshot-${id}.webp`, import.meta.url)));
+test('Every gallery screenshot has an optimized thumbnail, a full-size image, and an accessible link', () => {
+  assert.ok(screenshots.length > GALLERY_PREVIEW_COUNT);
+  assert.equal(new Set(screenshots.map(([id]) => id)).size, screenshots.length);
+  assert.equal((galleryMarkup().match(/data-gallery /g) || []).length, screenshots.length);
+  for (const [id] of screenshots) {
+    const shot = id.padStart(2, '0');
+    assert.ok(existsSync(new URL(`../src/assets/renewal/shot-${shot}-640.webp`, import.meta.url)));
+    assert.ok(existsSync(new URL(`../public/gallery/shot-${shot}.webp`, import.meta.url)));
+  }
+  assert.ok(galleryMarkup().includes(`Show all ${screenshots.length} screenshots`));
+});
+test('The hero wall only uses gallery screenshots and repeats each row for a seamless loop', () => {
+  const ids = new Set(screenshots.map(([id]) => id));
+  for (const row of heroWallRows) for (const id of row) assert.ok(ids.has(id));
+  assert.equal((heroWallMarkup().match(/<img /g) || []).length, heroWallRows.flat().length * 2);
+});
+test('Every image the home page references exists', () => {
+  const home = readFileSync(new URL('../src/home.html', import.meta.url), 'utf8');
+  for (const [, path] of home.matchAll(/\.\/(src\/assets\/[^"\s]+)/g)) assert.ok(existsSync(new URL(`../${path}`, import.meta.url)), path);
+  assert.ok(existsSync(new URL('../public/og-image.jpg', import.meta.url)));
 });
 test('Both entry points share content, preserve Privacy, and exclude Character Preview', () => {
   for (const filename of ['index.html', 'mobile.html']) {
@@ -47,14 +61,12 @@ test('Both entry points share content, preserve Privacy, and exclude Character P
   assert.ok(!/[\uac00-\ud7af\u2014]/.test(home));
 });
 
-test('Gallery opens with the requested nine screenshots and numbers match browsing order', () => {
-  const requestedOpening = ['009', '011', '001', '004', '012', '005', '013', '003', '010'];
-  assert.deepEqual(screenshots.slice(0, 9).map(([id]) => id), requestedOpening);
+test('Gallery numbers match browsing order', () => {
   const html = galleryMarkup();
-  const renderedIds = [...html.matchAll(/href="\.\/gallery\/screenshot-(\d{3})\.webp"/g)].map((match) => match[1]);
+  const renderedIds = [...html.matchAll(/href="\.\/gallery\/shot-(\d{2})\.webp"/g)].map((match) => match[1]);
   const renderedNumbers = [...html.matchAll(/aria-label="Open screenshot (\d+):/g)].map((match) => Number(match[1]));
-  assert.deepEqual(renderedIds, screenshots.map(([id]) => id));
-  assert.deepEqual(renderedNumbers, Array.from({ length: 20 }, (_, index) => index + 1));
+  assert.deepEqual(renderedIds, screenshots.map(([id]) => id.padStart(2, '0')));
+  assert.deepEqual(renderedNumbers, Array.from({ length: screenshots.length }, (_, index) => index + 1));
 });
 
 test('All six social icons share one light color and keep accessible link labels', () => {
@@ -69,11 +81,17 @@ test('All six social icons share one light color and keep accessible link labels
   assert.ok(!css.includes('.socials img'));
 });
 
-test('Demo promotion is on the hero artwork and button frames remain stable across interaction', () => {
+test('Demo promotion, Steam Next Fest, and Wishlist buttons are present and button frames stay stable', () => {
   const home = readFileSync(new URL('../src/home.html', import.meta.url), 'utf8');
   const css = readFileSync(new URL('../src/renewal.css', import.meta.url), 'utf8');
-  assert.ok(home.includes('<p class="hero-demo-promo"><span>Play the</span> <strong>Free demo</strong></p>'));
-  assert.ok(!home.includes('class="demo-status"'));
+  const js = readFileSync(new URL('../src/renewal.js', import.meta.url), 'utf8');
+  assert.ok(home.includes('<p class="demo-sticker" aria-hidden="true"><span>Free demo</span> <strong>Out now!</strong></p>'));
+  assert.ok(home.includes('id="next-fest"'));
+  assert.ok(home.includes('Oct 19 - 26 at 10 AM PT'));
+  assert.ok(home.includes('class="fest-wishlist" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english"'));
+  assert.ok((home.match(/Wishlist on Steam/g) || []).length >= 2);
+  assert.ok(js.includes('Date.UTC(2026, 9, 26, 17, 0)'));
+  assert.ok(css.includes('html[data-fest-state="ended"] [data-fest-show="live"]'));
   assert.ok(!css.includes('--button-hover'));
   assert.ok(!css.includes('.game-button::before'));
   assert.ok(css.includes('border-image: var(--button-sprite)'));

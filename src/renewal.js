@@ -1,3 +1,7 @@
+// Steam Next Fest (October 2026) ends Oct 26 at 10 AM PT. Afterwards the page thanks players instead.
+const NEXT_FEST_END = Date.UTC(2026, 9, 26, 17, 0);
+if (Date.now() >= NEXT_FEST_END) document.documentElement.dataset.festState = 'ended';
+
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNavigation = document.querySelector('#mobile-navigation');
 
@@ -40,6 +44,17 @@ document.addEventListener('click', (event) => {
 });
 window.matchMedia('(min-width: 1001px)').addEventListener('change', (event) => {
   if (event.matches) closeMenu();
+});
+
+const galleryGrid = document.querySelector('#gallery-grid');
+const galleryMore = document.querySelector('[data-gallery-more]');
+galleryMore.addEventListener('click', () => {
+  const firstHidden = galleryGrid.querySelector('.gallery-item:nth-child(13)');
+  const isExpanded = galleryGrid.classList.toggle('is-expanded');
+  galleryMore.setAttribute('aria-expanded', String(isExpanded));
+  galleryMore.textContent = isExpanded ? 'Show fewer screenshots' : `Show all ${galleryGrid.children.length} screenshots`;
+  if (isExpanded) firstHidden?.focus({ preventScroll: true });
+  else document.querySelector('#gallery').scrollIntoView({ block: 'start' });
 });
 
 const galleryLinks = [...document.querySelectorAll('[data-gallery]')];

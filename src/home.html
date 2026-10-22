@@ -3,47 +3,64 @@
 <header class="site-header">
   <a class="brand" href="#top" aria-label="ASHUR home"><img src="./src/assets/company-logo-horizontal.png" alt="ASHUR" width="166" height="58" /></a>
   <nav class="desktop-nav" aria-label="Primary navigation">
-    <a href="#game">The game</a><a href="#demo">Free demo</a><a href="#updates">Updates</a><a href="#gallery">Gallery</a><a href="#press">Press &amp; Creator</a><a href="mailto:contact@ashur.team">Contact</a>
+    <a href="#game">The game</a><a href="#next-fest">Next Fest</a><a href="#updates">Updates</a><a href="#gallery">Gallery</a><a href="#press">Press &amp; Creator</a><a href="mailto:contact@ashur.team">Contact</a>
   </nav>
   <a class="game-button game-button--small header-cta" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer">Get the game</a>
   <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-navigation"><span></span><span></span><span></span></button>
   <nav class="mobile-nav" id="mobile-navigation" aria-label="Mobile navigation">
-    <a href="#game">The game</a><a href="#demo">Free demo</a><a href="#updates">Updates</a><a href="#gallery">Gallery</a><a href="#press">Press &amp; Creator</a><a href="mailto:contact@ashur.team">Contact</a><a href="./privacy/" data-privacy-open>Privacy</a>
+    <a href="#game">The game</a><a href="#next-fest">Next Fest</a><a href="#updates">Updates</a><a href="#gallery">Gallery</a><a href="#press">Press &amp; Creator</a><a href="mailto:contact@ashur.team">Contact</a><a href="./privacy/" data-privacy-open>Privacy</a>
   </nav>
 </header>
 
 <main id="main">
   <section class="hero" aria-labelledby="hero-title">
-    <picture class="hero-art" aria-hidden="true"><source media="(max-width: 640px)" srcset="./src/assets/renewal/hero-960.webp" /><source media="(max-width: 1600px)" srcset="./src/assets/renewal/hero-1600.webp" /><img src="./src/assets/renewal/hero-2560.webp" alt="" width="2560" height="827" fetchpriority="high" /></picture>
+    <!-- renewal-hero-wall -->
     <div class="hero-shade" aria-hidden="true"></div>
-    <p class="hero-demo-promo"><span>Play the</span> <strong>Free demo</strong></p>
-    <div class="hero-content container">
-      <img class="game-logo" src="./src/assets/game-logo.png" alt="Gamble Hunters" width="700" height="405" />
-      <p class="eyebrow">A casino action roguelite for 1-4 players</p>
-      <h1 id="hero-title"><span>One shared wallet.</span><span>Four friends.</span><span class="hero-punchline">In a casino?</span></h1>
-      <p class="hero-copy">Hunt together, then blow your shared loot at the casino.</p>
-      <p class="hero-hurry">Hurry! Before your friends gamble away your share, too.</p>
-      <div class="hero-actions">
-        <a class="game-button" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer"><img src="./src/assets/steam-logo.png" alt="" width="30" height="30" />Play the free demo</a>
-        <a class="game-button game-button--teal" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer"><img src="./src/assets/steam-logo.png" alt="" width="30" height="30" />Wishlist on Steam</a>
+    <div class="container hero-layout">
+      <div class="hero-content">
+        <a class="hero-badge" href="#next-fest"><span class="live-dot" aria-hidden="true"></span><span data-fest-show="live">Free demo live at Steam Next Fest</span><span data-fest-show="ended">Free demo out now on Steam</span></a>
+        <p class="eyebrow">Gamble Hunters · A casino action roguelite for 1-4 players</p>
+        <h1 id="hero-title"><span>One shared wallet.</span><span>Four friends.</span><span class="hero-punchline">In a casino?</span></h1>
+        <p class="hero-copy">Hunt together, then blow your shared loot at the casino.</p>
+        <p class="hero-hurry">Hurry! Before your friends gamble away your share, too.</p>
+        <div class="hero-actions">
+          <a class="game-button" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer"><img src="./src/assets/steam-logo.png" alt="" width="30" height="30" />Play the free demo</a>
+          <a class="game-button game-button--teal" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer"><img src="./src/assets/steam-logo.png" alt="" width="30" height="30" />Wishlist on Steam</a>
+        </div>
+        <p class="release-note">Free demo available now <span>Full game · January 2027</span></p>
       </div>
-      <p class="release-note">Free demo available now <span>Full game · January 2027</span></p>
+      <figure class="hero-key-art">
+        <img src="./src/assets/renewal/key-art-1232.webp" srcset="./src/assets/renewal/key-art-720.webp 720w, ./src/assets/renewal/key-art-1232.webp 1232w" sizes="(max-width: 1000px) 100vw, 60vw" alt="Gamble Hunters key art: the skull-faced Captain grinning over gold coins with three hunters" width="1232" height="706" fetchpriority="high" />
+        <p class="demo-sticker" aria-hidden="true"><span>Free demo</span> <strong>Out now!</strong></p>
+      </figure>
     </div>
-    <a class="hero-scroll" href="#demo">Meet your next bad idea <span aria-hidden="true">↓</span></a>
+    <a class="hero-scroll" href="#next-fest">Meet your next bad idea <span aria-hidden="true">↓</span></a>
   </section>
 
   <div class="game-facts" aria-label="Game features"><span>1-4 players</span><span>Online co-op</span><span>First-person action</span><span>PC on Steam</span></div>
 
-  <section class="demo-section section-space" id="demo" aria-labelledby="demo-title">
-    <div class="container demo-layout">
-      <a class="demo-art game-frame" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer" aria-label="Get the free Gamble Hunters demo on Steam"><img src="./src/assets/renewal/demo-1280.webp" srcset="./src/assets/renewal/demo-640.webp 640w, ./src/assets/renewal/demo-1280.webp 1280w" sizes="(max-width: 800px) 90vw, 53vw" alt="Gamble Hunters: free demo out now, featuring a pirate and a mountain of gold" width="1280" height="720" loading="lazy" /><span class="art-link">Available on Steam <span aria-hidden="true">↗</span></span></a>
-      <div class="demo-copy">
-        <p class="eyebrow">The casino doors are open</p>
-        <h2 id="demo-title">Demo<br /> <em>out now!</em></h2>
-        <p>Bring your friends. Share a wallet. See who empties it first.</p>
-        <p class="muted">Play the free demo solo or in online co-op. Grab it from our Steam store page and give your crew's luck a test run.</p>
-        <a class="game-button" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer"><img src="./src/assets/steam-logo.png" alt="" width="30" height="30" />Get the free demo</a>
-        <a class="subtle-link" href="https://discord.gg/tx6YgmrDT4" target="_blank" rel="noopener noreferrer">Played a run? Tell us on Discord <span aria-hidden="true">↗</span></a>
+  <section class="fest-section" id="next-fest" aria-labelledby="fest-title">
+    <div class="container fest-layout">
+      <div class="fest-copy">
+        <img class="fest-logo" src="./src/assets/next-fest/next-fest-logo.webp" alt="Steam Next Fest" width="560" height="244" />
+        <p class="fest-game">Gamble Hunters</p>
+        <p class="fest-developer">ASHUR Inc.</p>
+        <h2 class="fest-heading" id="fest-title"><span data-fest-show="live">Play our demo during Steam Next Fest</span><span data-fest-show="ended">Thanks for playing during Steam Next Fest</span></h2>
+        <p class="fest-date"><span data-fest-show="live">Oct 19 - 26 at 10 AM PT</span><span data-fest-show="ended">The free demo is still out now</span></p>
+        <p class="fest-text">The demo is out now! Grab it for free, bring your crew, and see who empties the wallet first. Then add Gamble Hunters to your wishlist so you know the moment the full game launches in January 2027.</p>
+        <div class="fest-actions">
+          <a class="fest-wishlist" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer"><span class="fest-wishlist-icon" aria-hidden="true"></span><span class="fest-wishlist-label">Wishlist <span>on Steam</span></span></a>
+          <a class="fest-demo-link" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer">Play the free demo <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="fest-art">
+        <div class="fest-slides">
+          <img src="./src/assets/renewal/shot-57-1280.webp" alt="The Captain dealing cards to four hunters at a glowing table" width="1280" height="720" loading="lazy" />
+          <img src="./src/assets/renewal/shot-13-1280.webp" alt="A water serpent coiling into a figure eight above the ship" width="1280" height="720" loading="lazy" />
+          <img src="./src/assets/renewal/shot-51-1280.webp" alt="The roulette table with a glowing Go chip" width="1280" height="720" loading="lazy" />
+          <img src="./src/assets/renewal/shot-27-1280.webp" alt="A giant orca monster baring its teeth in the deep sea" width="1280" height="720" loading="lazy" />
+        </div>
+        <p class="fest-art-label">Gameplay from the demo</p>
       </div>
     </div>
   </section>
@@ -52,9 +69,22 @@
     <div class="container">
       <div class="section-heading"><div><p class="eyebrow">Here's the deal</p><h2 id="game-title">Earn it together.<br /><em>Spend it your way</em></h2></div><p>Hunt monsters for Rupees, bring them back to a shared betting pool, and turn a good run into a very bad group decision.</p></div>
       <div class="game-loop">
-        <article class="loop-step"><div class="step-image"><img src="./src/assets/renewal/screenshot-010-640.webp" alt="First-person shooting during a monster hunt in space" width="640" height="360" loading="lazy" /><span class="step-number">01</span></div><p class="eyebrow">Hunt</p><h3>Fill the shared wallet</h3><p>Take on monster waves together. Every Rupee you bring back goes into the crew's betting pool.</p></article>
-        <article class="loop-step"><div class="step-image"><img src="./src/assets/renewal/screenshot-004-640.webp" alt="A slot machine jackpot showering the casino with gold" width="640" height="360" loading="lazy" /><span class="step-number">02</span></div><p class="eyebrow">Gamble</p><h3>Beat your friends to it</h3><p>Slots, roulette, and one shared pot. Your next big bet might depend on what your friends leave behind.</p></article>
-        <article class="loop-step"><div class="step-image"><img src="./src/assets/renewal/screenshot-007-640.webp" alt="The in-game weapon upgrade screen" width="640" height="360" loading="lazy" /><span class="step-number">03</span></div><p class="eyebrow">Upgrade &amp; repay</p><h3>Make the next run count</h3><p>Upgrade your weapon, pick up artifacts, or pay off the crew's debt. The deadline isn't going to wait.</p></article>
+        <article class="loop-step"><div class="step-image"><img src="./src/assets/renewal/shot-49-1280.webp" alt="Octopuses and a skeleton fish attacking the ship under the aurora" width="1280" height="720" loading="lazy" /><span class="step-number">01</span></div><p class="eyebrow">Hunt</p><h3>Fill the shared wallet</h3><p>Take on monster waves together. Every Rupee you bring back goes into the crew's betting pool.</p></article>
+        <article class="loop-step"><div class="step-image"><img src="./src/assets/renewal/shot-46-1280.webp" alt="Two hunters playing a row of Jackpot Hunters slot machines" width="1280" height="720" loading="lazy" /><span class="step-number">02</span></div><p class="eyebrow">Gamble</p><h3>Beat your friends to it</h3><p>Slots, roulette, Blackjack, and one shared pot. Your next big bet might depend on what your friends leave behind.</p></article>
+        <article class="loop-step"><div class="step-image"><img src="./src/assets/renewal/shot-54-1280.webp" alt="The weapon upgrade screen comparing the current and next weapon" width="1280" height="720" loading="lazy" /><span class="step-number">03</span></div><p class="eyebrow">Upgrade &amp; repay</p><h3>Make the next run count</h3><p>Upgrade your weapon, pick up artifacts, or pay off the crew's debt. The deadline isn't going to wait.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seas-section section-space" id="seas" aria-labelledby="seas-title">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Hunt across strange seas</p><h2 id="seas-title">Every sea<br /><em>bites back</em></h2></div><p>Sail under the aurora, through bubbling reefs, frozen waters, and the deep blue. Every hunt brings new monsters, and every monster drops Rupees for the shared wallet.</p></div>
+      <div class="seas-grid">
+        <figure class="sea-tile sea-tile--wide"><img src="./src/assets/renewal/shot-67-1280.webp" alt="Octopuses inside rings of fish beneath green northern lights" width="1280" height="720" loading="lazy" /><figcaption>Under the aurora</figcaption></figure>
+        <figure class="sea-tile"><img src="./src/assets/renewal/shot-27-1280.webp" alt="A giant orca monster baring its teeth in the deep sea" width="1280" height="720" loading="lazy" /><figcaption>The deep blue</figcaption></figure>
+        <figure class="sea-tile"><img src="./src/assets/renewal/shot-66-1280.webp" alt="A giant red crab surrounded by bubbles" width="1280" height="720" loading="lazy" /><figcaption>Bubble trouble</figcaption></figure>
+        <figure class="sea-tile"><img src="./src/assets/renewal/shot-31-1280.webp" alt="A huge school of fish swarming over icy waters" width="1280" height="720" loading="lazy" /><figcaption>Frozen waters</figcaption></figure>
+        <figure class="sea-tile"><img src="./src/assets/renewal/shot-35-1280.webp" alt="Fish swirling over a colorful coral reef" width="1280" height="720" loading="lazy" /><figcaption>Coral reef</figcaption></figure>
       </div>
     </div>
   </section>
@@ -68,7 +98,7 @@
 
   <section class="gallery-section section-space" id="gallery" aria-labelledby="gallery-title">
     <div class="container">
-      <div class="section-heading"><div><p class="eyebrow">Straight from the game</p><h2 id="gallery-title">A peek at<br /><em>the chaos</em></h2></div><p>Hunts, jackpots, and questionable decisions.<br />Explore all 20 screenshots. Select any image for a closer look.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Straight from the game</p><h2 id="gallery-title">A peek at<br /><em>the chaos</em></h2></div><p>Hunts, jackpots, and questionable decisions.<br />Select any image for a closer look.</p></div>
       <!-- renewal-gallery -->
     </div>
   </section>
@@ -88,8 +118,7 @@
       <a class="press-kit-preview game-frame" href="https://drive.google.com/drive/folders/15j67SsLW-pSsL-vDdcT-_t-zmZAd41Aq?usp=drive_link" target="_blank" rel="noopener noreferrer" aria-label="Open the Gamble Hunters press kit on Google Drive (opens in a new tab)">
         <span class="press-use-label">Free to use</span>
         <div class="press-kit-cover">
-          <img class="press-key-art" src="./src/assets/renewal/hero-960.webp" alt="" width="960" height="310" loading="lazy" />
-          <img class="press-game-logo" src="./src/assets/game-logo.png" alt="" width="700" height="405" loading="lazy" />
+          <img class="press-key-art" src="./src/assets/renewal/key-art-720.webp" srcset="./src/assets/renewal/key-art-720.webp 720w, ./src/assets/renewal/key-art-1232.webp 1232w" sizes="(max-width: 800px) 92vw, 50vw" alt="" width="720" height="413" loading="lazy" />
         </div>
         <div class="press-kit-caption"><div><p>Gamble Hunters</p><h3>Press kit</h3></div><span aria-hidden="true">↗</span></div>
         <ul class="press-assets" aria-label="Press kit contents"><li>Logos</li><li>Screenshots</li><li>Trailers</li><li>Key art</li></ul>
@@ -98,7 +127,7 @@
   </section>
 
   <section class="steam-section section-space" id="wishlist" aria-labelledby="steam-title">
-    <img class="steam-background" src="./src/assets/renewal/screenshot-017-1600.webp" alt="" width="1600" height="900" loading="lazy" aria-hidden="true" />
+    <img class="steam-background" src="./src/assets/renewal/shot-53-1280.webp" alt="" width="1280" height="720" loading="lazy" aria-hidden="true" />
     <div class="container steam-layout">
       <div class="steam-copy"><p class="eyebrow">Your crew is waiting</p><h2 id="steam-title">Try it now.<br /><em>Wishlist what's next</em></h2><p>The free demo is out now. Add Gamble Hunters to your wishlist for the full PC release in January 2027.</p><a class="game-button" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer"><img src="./src/assets/steam-logo.png" alt="" width="30" height="30" />Wishlist on Steam</a></div>
       <div class="steam-widget-wrap"><p class="widget-label"><img src="./src/assets/steam-logo.png" alt="" width="24" height="24" />Find us on Steam</p><div class="steam-widget-viewport"><iframe title="Gamble Hunters on Steam" src="https://store.steampowered.com/widget/5117630/?l=english" width="646" height="190" loading="lazy"></iframe></div><a class="subtle-link" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english" target="_blank" rel="noopener noreferrer">Open the store page <span aria-hidden="true">↗</span></a></div>
