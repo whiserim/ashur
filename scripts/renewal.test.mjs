@@ -91,6 +91,9 @@ test('Demo promotion, Steam Next Fest, and Wishlist buttons are present and butt
   assert.ok(home.includes('class="fest-wishlist" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english"'));
   assert.ok((home.match(/Wishlist on Steam/g) || []).length >= 2);
   assert.ok(js.includes('Date.UTC(2026, 9, 26, 17, 0)'));
+  assert.ok(home.includes('data-trailer="BIiAV4OXzkw"'));
+  assert.ok(home.includes('href="https://www.youtube.com/watch?v=BIiAV4OXzkw"'));
+  assert.ok(js.includes('https://www.youtube-nocookie.com/embed/'));
   assert.ok(css.includes('html[data-fest-state="ended"] [data-fest-show="live"]'));
   assert.ok(!css.includes('--button-hover'));
   assert.ok(!css.includes('.game-button::before'));

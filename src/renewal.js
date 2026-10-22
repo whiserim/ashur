@@ -2,6 +2,21 @@
 const NEXT_FEST_END = Date.UTC(2026, 9, 26, 17, 0);
 if (Date.now() >= NEXT_FEST_END) document.documentElement.dataset.festState = 'ended';
 
+// Load the YouTube player only when someone presses play, so the page stays light and no YouTube cookies are set before then.
+const trailer = document.querySelector('[data-trailer]');
+trailer.querySelector('.trailer-poster').addEventListener('click', (event) => {
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  const player = document.createElement('iframe');
+  player.src = `https://www.youtube-nocookie.com/embed/${trailer.dataset.trailer}?autoplay=1&rel=0&playsinline=1`;
+  player.title = "Gamble Hunters trailer: Your Friends Can't Be Trusted With Money";
+  player.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  player.referrerPolicy = 'strict-origin-when-cross-origin';
+  player.allowFullscreen = true;
+  trailer.replaceChildren(player);
+  player.focus();
+});
+
 const menuToggle = document.querySelector('.menu-toggle');
 const mobileNavigation = document.querySelector('#mobile-navigation');
 
