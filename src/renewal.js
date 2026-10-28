@@ -1,7 +1,3 @@
-// Steam Next Fest (October 2026) ends Oct 26 at 10 AM PT. Afterwards the page thanks players instead.
-const NEXT_FEST_END = Date.UTC(2026, 9, 26, 17, 0);
-if (Date.now() >= NEXT_FEST_END) document.documentElement.dataset.festState = 'ended';
-
 // Load the YouTube player only when someone presses play, so the page stays light and no YouTube cookies are set before then.
 const trailer = document.querySelector('[data-trailer]');
 trailer.querySelector('.trailer-poster').addEventListener('click', (event) => {

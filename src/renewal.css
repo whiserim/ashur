@@ -6,14 +6,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'Roboto Mono';
-  src: url('./assets/fonts/RobotoMono-latin.woff2') format('woff2');
-  font-weight: 100 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   color-scheme: dark;
   --ink: #080c15;
@@ -24,10 +16,6 @@
   --line: rgb(255 255 255 / 13%);
   --display: 'Lilita One', Impact, sans-serif;
   --body: Arial, Helvetica, sans-serif;
-  --mono: 'Roboto Mono', 'Courier New', monospace;
-  --fest-ink: #1f110b;
-  --fest-cream: #ffe3a9;
-  --fest-blue: #8ccdeb;
 }
 
 * { box-sizing: border-box; }
@@ -84,8 +72,8 @@ h3 { font-size: clamp(24px, 2.2vw, 31px); }
 .hero-shade { position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse 48% 60% at 70% 48%, rgb(255 132 46 / 17%), transparent 70%), linear-gradient(90deg, rgb(6 9 18 / 95%) 0%, rgb(6 9 18 / 82%) 36%, rgb(6 9 18 / 50%) 62%, rgb(6 9 18 / 62%) 100%), linear-gradient(0deg, #080c15 0%, transparent 22%, transparent 84%, rgb(8 12 21 / 70%) 100%); }
 .hero-layout { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); align-items: center; gap: clamp(16px, 2vw, 32px); }
 .hero-content { position: relative; z-index: 1; }
-.hero-badge { display: inline-flex; align-items: center; gap: 11px; margin-bottom: 26px; padding: 9px 16px 9px 13px; border: 1px solid rgb(140 205 235 / 45%); border-radius: 999px; background: rgb(12 26 40 / 82%); color: #e9f6ff; font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; transition: border-color 160ms, background 160ms; }
-.hero-badge:hover { border-color: var(--fest-blue); background: rgb(20 42 62 / 90%); }
+.hero-badge { display: inline-flex; align-items: center; gap: 11px; margin-bottom: 26px; padding: 9px 16px 9px 13px; border: 1px solid rgb(73 202 208 / 45%); border-radius: 999px; background: rgb(12 26 40 / 82%); color: #e9f6ff; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; transition: border-color 160ms, background 160ms; }
+.hero-badge:hover { border-color: var(--teal); background: rgb(20 42 62 / 90%); }
 .live-dot { flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: #67e26b; box-shadow: 0 0 0 0 rgb(103 226 107 / 60%); animation: live-pulse 1.8s ease-out infinite; }
 @keyframes live-pulse { to { box-shadow: 0 0 0 9px rgb(103 226 107 / 0%); } }
 .hero .eyebrow { margin-bottom: 14px; color: #ddd5c3; font-size: 10px; letter-spacing: .15em; }
@@ -105,10 +93,6 @@ h3 { font-size: clamp(24px, 2.2vw, 31px); }
 .demo-sticker strong { display: block; font-weight: 400; color: #d23c2a; white-space: nowrap; }
 .hero-scroll { position: absolute; right: max(56px, calc((100vw - 1320px) / 2)); bottom: 24px; display: flex; align-items: center; gap: 24px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
 .hero-scroll span { font-size: 24px; color: var(--gold); }
-[data-fest-show="ended"] { display: none; }
-html[data-fest-state="ended"] [data-fest-show="live"] { display: none; }
-html[data-fest-state="ended"] [data-fest-show="ended"] { display: inline; }
-html[data-fest-state="ended"] .live-dot { animation: none; background: var(--gold); }
 .game-facts { display: flex; justify-content: center; gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #0c111b; }
 .game-facts span { padding: 20px clamp(18px, 4.3vw, 70px); font-size: 11px; font-weight: 800; color: #b7bfcc; letter-spacing: .13em; text-transform: uppercase; }
 .game-facts span + span { border-left: 1px solid var(--line); }
@@ -118,39 +102,24 @@ html[data-fest-state="ended"] .live-dot { animation: none; background: var(--gol
 .game-frame::before { top: -2px; left: -2px; border-top: 4px solid var(--teal); border-left: 4px solid var(--teal); }
 .game-frame::after { bottom: -2px; right: -2px; border-bottom: 4px solid #d74e35; border-right: 4px solid #d74e35; }
 
-/* Steam Next Fest: colors, type, and offset blocks follow the official partner kit. */
-.fest-section { position: relative; isolation: isolate; overflow: hidden; padding-block: clamp(64px, 6.5vw, 104px); background: #7fb6e2 url('./assets/next-fest/next-fest-background.webp') center / cover no-repeat; color: var(--fest-ink); }
-.fest-layout { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); align-items: center; gap: clamp(36px, 6vw, 96px); }
-.fest-logo { width: clamp(250px, 29vw, 420px); margin-left: -2px; }
-.fest-game { margin-top: clamp(30px, 3.2vw, 44px); font-family: var(--mono); font-size: clamp(30px, 3.1vw, 46px); line-height: 1.1; letter-spacing: .12em; text-transform: uppercase; }
-.fest-developer { margin-top: 8px; font-family: var(--mono); font-size: clamp(13px, 1.1vw, 16px); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.fest-heading { max-width: 520px; margin-top: clamp(30px, 3.2vw, 46px); color: #1b1d2c; font-family: var(--mono); font-size: clamp(22px, 2.2vw, 32px); font-weight: 400; line-height: 1.32; letter-spacing: .06em; }
-.fest-date { position: relative; display: inline-block; margin-top: 22px; padding: 9px 24px 9px 0; background: var(--fest-ink); color: #fff; font-family: var(--mono); font-size: clamp(14px, 1.3vw, 18px); letter-spacing: .1em; text-transform: uppercase; }
-.fest-date::before { content: ''; position: absolute; top: 0; bottom: 0; right: 100%; width: 100vw; background: var(--fest-ink); }
-.fest-text { max-width: 500px; margin-top: 22px; color: #1d2236; font-size: 15px; line-height: 1.65; }
-.fest-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px 30px; margin-top: 30px; }
-.fest-wishlist { display: inline-flex; align-items: stretch; gap: 12px; color: #fff; font-family: var(--mono); font-weight: 700; text-transform: uppercase; transition: transform 160ms; }
-.fest-wishlist-icon, .fest-wishlist-label { background: var(--fest-ink); transition: box-shadow 160ms; }
-.fest-wishlist-icon { position: relative; flex: 0 0 66px; box-shadow: 7px 7px 0 var(--fest-blue); }
-.fest-wishlist-icon::before { content: ''; position: absolute; inset: 15px; background-color: #ffe9dc; -webkit-mask: url('./assets/steam-logo.png') center / contain no-repeat; mask: url('./assets/steam-logo.png') center / contain no-repeat; mask-mode: luminance; }
-.fest-wishlist-label { display: flex; align-items: center; gap: .55em; padding: 18px 28px; font-size: clamp(17px, 1.5vw, 21px); letter-spacing: .2em; box-shadow: 7px 7px 0 var(--fest-cream); }
-.fest-wishlist-label span { color: var(--fest-cream); }
-.fest-wishlist:hover, .fest-wishlist:focus-visible { transform: translate(-2px, -2px); }
-.fest-wishlist:hover .fest-wishlist-icon, .fest-wishlist:focus-visible .fest-wishlist-icon { box-shadow: 10px 10px 0 var(--fest-blue); }
-.fest-wishlist:hover .fest-wishlist-label, .fest-wishlist:focus-visible .fest-wishlist-label { box-shadow: 10px 10px 0 var(--fest-cream); }
-.fest-wishlist:focus-visible, .fest-demo-link:focus-visible { outline-color: var(--fest-ink); }
-.fest-demo-link { display: inline-flex; gap: 12px; padding-bottom: 4px; border-bottom: 2px solid var(--fest-ink); font-family: var(--mono); font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.fest-demo-link:hover { color: #fff; border-color: #fff; }
-.fest-art { position: relative; }
-.fest-trailer { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--fest-ink); box-shadow: 16px 16px 0 var(--fest-cream); }
-.fest-trailer iframe, .trailer-poster, .trailer-poster img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
-.trailer-poster img { object-fit: cover; transition: transform 300ms, filter 300ms; }
+.demo-section { background: radial-gradient(ellipse at 88% 50%, rgb(27 51 56 / 24%), transparent 60%); }
+.demo-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(36px, 6vw, 88px); }
+.demo-copy h2 { margin: 14px 0 20px; font-size: clamp(50px, 5.4vw, 80px); }
+.demo-copy > p:not(.eyebrow) { margin-top: 13px; max-width: 460px; }
+.demo-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+.demo-actions .game-button { min-width: 0; padding-inline: 22px; font-size: 17px; }
+.demo-copy .subtle-link { display: inline-flex; margin-top: 20px; }
+.demo-art { position: relative; }
+.demo-art-label { position: absolute; z-index: 2; top: -15px; left: 18px; padding: 7px 17px; border: 3px solid #080c15; background: var(--gold); color: #17202a; box-shadow: 3px 3px 0 #04070d; font-family: var(--display); font-size: 19px; line-height: 1.2; text-transform: uppercase; transform: rotate(-3deg); pointer-events: none; }
+.demo-trailer { aspect-ratio: 16 / 9; }
+.demo-trailer iframe, .trailer-poster, .trailer-poster img { position: absolute; inset: 8px; display: block; width: calc(100% - 16px); height: calc(100% - 16px); border: 0; }
+.trailer-poster { overflow: hidden; background: #04060b; }
+.trailer-poster img { inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 300ms, filter 300ms; }
 .trailer-poster:hover img, .trailer-poster:focus-visible img { transform: scale(1.03); filter: brightness(1.08); }
-.trailer-poster:focus-visible { outline: 4px solid var(--fest-ink); outline-offset: 6px; }
-.trailer-play { position: absolute; top: 50%; left: 50%; width: clamp(72px, 8vw, 104px); aspect-ratio: 1; border: 4px solid var(--fest-ink); background: var(--fest-cream); box-shadow: 7px 7px 0 var(--fest-ink); transform: translate(-50%, -50%); transition: transform 160ms, box-shadow 160ms; }
-.trailer-play::before { content: ''; position: absolute; top: 50%; left: 54%; border-style: solid; border-width: 17px 0 17px 28px; border-color: transparent transparent transparent var(--fest-ink); transform: translate(-50%, -50%); }
-.trailer-poster:hover .trailer-play, .trailer-poster:focus-visible .trailer-play { transform: translate(calc(-50% - 2px), calc(-50% - 2px)); box-shadow: 10px 10px 0 var(--fest-ink); }
-.fest-art-label { position: absolute; left: 0; bottom: 100%; padding: 7px 14px; background: var(--fest-ink); color: #fff; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.trailer-poster:focus-visible { outline-offset: -4px; }
+.trailer-play { position: absolute; top: 50%; left: 50%; width: clamp(72px, 8vw, 104px); aspect-ratio: 1; border: 4px solid #080c15; border-radius: 14px; background: var(--gold); box-shadow: 6px 7px 0 #080c15; transform: translate(-50%, -50%); transition: transform 160ms, box-shadow 160ms; }
+.trailer-play::before { content: ''; position: absolute; top: 50%; left: 54%; border-style: solid; border-width: 17px 0 17px 28px; border-color: transparent transparent transparent #17202a; transform: translate(-50%, -50%); }
+.trailer-poster:hover .trailer-play, .trailer-poster:focus-visible .trailer-play { transform: translate(calc(-50% - 2px), calc(-50% - 2px)); box-shadow: 9px 10px 0 #080c15; }
 
 .game-section { border-block: 1px solid var(--line); background: #0c111c; }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 45px; margin-bottom: 38px; }
@@ -307,9 +276,9 @@ html[data-fest-state="ended"] .live-dot { animation: none; background: var(--gol
   .hero-content { max-width: 640px; }
   .hero-shade { background: radial-gradient(ellipse 70% 40% at 50% 26%, rgb(255 132 46 / 16%), transparent 70%), linear-gradient(0deg, #080c15 0%, rgb(6 9 18 / 90%) 50%, rgb(6 9 18 / 62%) 100%); }
   .hero-scroll { display: none; }
-  .fest-layout { grid-template-columns: 1fr; gap: 56px; }
-  .fest-copy { max-width: 640px; }
-  .fest-art { max-width: 720px; margin-right: 16px; }
+  .demo-layout { grid-template-columns: 1fr; gap: 48px; }
+  .demo-copy { max-width: 640px; }
+  .demo-art { max-width: 720px; }
 }
 @media (max-width: 800px) {
   html { scroll-padding-top: 90px; }
@@ -365,18 +334,10 @@ html[data-fest-state="ended"] .live-dot { animation: none; background: var(--gol
   .game-facts span:nth-child(4) { border-top: 1px solid var(--line); }
   .section-space { padding-block: 62px; }
   h2 { font-size: clamp(34px, 9vw, 48px); }
-  .fest-section { padding-block: 56px 64px; background-position: 30% center; }
-  .fest-logo { width: min(280px, 78%); }
-  .fest-game { font-size: clamp(24px, 7.4vw, 32px); letter-spacing: .08em; }
-  .fest-heading { font-size: clamp(19px, 5.4vw, 24px); letter-spacing: .03em; }
-  .fest-date { font-size: 13px; letter-spacing: .06em; padding-right: 16px; }
-  .fest-text { font-size: 14px; }
-  .fest-actions { flex-direction: column; align-items: flex-start; gap: 26px; }
-  .fest-wishlist-icon { flex-basis: 56px; }
-  .fest-wishlist-icon::before { inset: 12px; }
-  .fest-wishlist-label { padding: 15px 18px; font-size: 16px; letter-spacing: .12em; }
-  .fest-art { margin-right: 12px; }
-  .fest-trailer { box-shadow: 12px 12px 0 var(--fest-cream); }
+  .demo-copy h2 { font-size: clamp(43px, 11vw, 56px); }
+  .demo-copy > p:not(.eyebrow) { font-size: 14px; }
+  .demo-actions { flex-direction: column; max-width: 350px; }
+  .demo-art-label { top: -13px; left: 10px; padding: 6px 12px; font-size: 16px; }
   .trailer-play::before { border-width: 13px 0 13px 21px; }
   .seas-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
   .sea-tile figcaption { padding: 24px 10px 8px; font-size: 15px; }

@@ -81,20 +81,17 @@ test('All six social icons share one light color and keep accessible link labels
   assert.ok(!css.includes('.socials img'));
 });
 
-test('Demo promotion, Steam Next Fest, and Wishlist buttons are present and button frames stay stable', () => {
+test('Demo promotion, trailer, and Wishlist buttons are present and button frames stay stable', () => {
   const home = readFileSync(new URL('../src/home.html', import.meta.url), 'utf8');
   const css = readFileSync(new URL('../src/renewal.css', import.meta.url), 'utf8');
   const js = readFileSync(new URL('../src/renewal.js', import.meta.url), 'utf8');
   assert.ok(home.includes('<p class="demo-sticker" aria-hidden="true"><span>Free demo</span> <strong>Out now!</strong></p>'));
-  assert.ok(home.includes('id="next-fest"'));
-  assert.ok(home.includes('Oct 19 - 26 at 10 AM PT'));
-  assert.ok(home.includes('class="fest-wishlist" href="https://store.steampowered.com/app/5117630/Gamble_Hunters/?l=english"'));
-  assert.ok((home.match(/Wishlist on Steam/g) || []).length >= 2);
-  assert.ok(js.includes('Date.UTC(2026, 9, 26, 17, 0)'));
+  assert.ok(home.includes('id="demo"'));
+  assert.ok(!/next fest/i.test(home));
+  assert.ok((home.match(/Wishlist on Steam/g) || []).length >= 3);
   assert.ok(home.includes('data-trailer="BIiAV4OXzkw"'));
   assert.ok(home.includes('href="https://www.youtube.com/watch?v=BIiAV4OXzkw"'));
   assert.ok(js.includes('https://www.youtube-nocookie.com/embed/'));
-  assert.ok(css.includes('html[data-fest-state="ended"] [data-fest-show="live"]'));
   assert.ok(!css.includes('--button-hover'));
   assert.ok(!css.includes('.game-button::before'));
   assert.ok(css.includes('border-image: var(--button-sprite)'));
